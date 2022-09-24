@@ -19,7 +19,7 @@ body {
 }
 
 #main-holder {
-  width: 50%;
+  width: 40%;
   height: 70%;
   display: grid;
   justify-items: center;
@@ -109,4 +109,35 @@ body {
 	font-size: 18px;
 	margin-bottom: 0;
 	font-weight: bold;
+}
+
+#facebook {
+	background-image: url(img2.png);
+	border-radius: 20px;
+	width: 40px;
+	height: 40px;
+	background-repeat: no-repeat;
+    background-position: center;
+	background-size: cover;
+	cursor: pointer;
+	outline: none;
+}
+
+#google {
+	background-image: url(img3.png);
+	border-radius: 20px;
+	width: 40px;
+	height: 40px;
+	background-repeat: no-repeat;
+    background-position: center;
+	background-size: cover;
+	cursor: pointer;
+	outline: none;
+	margin-left: 15px;
+}
+
+#container{
+	width: 100%;
+	margin-top: 7px;
+    text-align: center;
 }
