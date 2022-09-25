@@ -5,22 +5,22 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="profile-page.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile edit</title>
+  <title>Edit Profile </title>
 </head>
 
 <body>
   <main id="main-holder">
-    <h1 id="profile-header">Profile Edit</h1>
+    <h1 id="profile-header">Edit Profile </h1>
 
-    <form id="profile-form">
+    <form id="profile-form" method="post">
       <input type="text" name="name" id="username-field" class="profile-form-field" placeholder="Name">
       <input type="password" name="password" id="password-field" class="profile-form-field" placeholder="Password">
-      <input class="profile-form-field" type="text" id="email-field" name="email" placeholder="Email">
+      <input type="email" name="email" id="email-field" class="profile-form-field" placeholder="Email">
+      <input type="number" name="phone" id="phone-field" class="profile-form-field" placeholder="Phone" maxlength="10">
+      <textarea rows = "3" cols = "18" name = "bio" id="bio-field" class="profile-form-field" placeholder="Bio"></textarea>
+      <input type="file" id="photo" name="photo" placeholder="Profile photo">
       <input type="submit" value="Save" id="profile-form-submit">
-
-
 	  </br>
-
     </form>
 
   </main>
