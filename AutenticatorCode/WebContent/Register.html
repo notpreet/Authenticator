@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="login-page.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+
+<body id="b1">
+  <main id="main-holder">
+    <h1 id="login-header">REGISTER</h1>
+    
+    <form id="login-form">
+	<div class="profile-pic-div">
+		<img src="profile.png" id="photo">
+	</div> 
+	<input type="file" id="file">
+		<label for="file" id="uploadBtn">Upload Photo</label>
+      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username" required>
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password" required>
+      <input type="password" name="retype-password" id="retype-password-field" class="login-form-field" placeholder="Retype-Password" required>
+	  <input type="text" name="email" id="email-field" class="login-form-field" placeholder="Email" required>
+	  <textarea rows="5" cols="20" name="bio" id="bio-field" class="bio-field" spellcheck="true">Enter your bio</textarea>
+	  </br>
+	  <input type="submit" value="Register" id="signup-form-submit">
+    </form>
+  
+  </main>
+</body>
+
+</html>

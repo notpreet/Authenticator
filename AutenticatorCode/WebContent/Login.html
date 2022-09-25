@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="login-page.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="718737140980-kfofp00h0j35evj2cqib7gdjv6vpmit6.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body id="b1">
+  <main id="main-holder">
+    <h1 id="login-header">LOGIN</h1>
+
+    <div id="login-error-msg-holder">
+      <p id="login-error-msg">Invalid username <span id"error-msg-second-line">and/or password</span></p>
+    </div>
+
+    <form id="login-form">
+      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+
+      </br>
+      <p id="text"><u>Dont have account?</u></p>
+      <input type="submit" value="Sign Up/Register" id="signup-form-submit">
+      <div id="container">
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+      </div>
+    </form>
+
+  </main>
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    }
+  </script>
+</body>
+
+</html>
