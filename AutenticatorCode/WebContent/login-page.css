@@ -72,11 +72,60 @@ html {
   align-items: center;
 }
 
+
+.profile-pic-div{
+	
+    height: 150px;
+    width: 150px;
+    position: relative;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+
+#photo{
+    height: 100%;
+    width: 100%;
+}
+
+#file{
+	display: none;
+}
+
+
+#uploadBtn{
+	margin: 0;
+	transform: translateY(-150%);
+    height: 20px;
+    width: 70%;
+	align: center;
+    position: relative;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: wheat;
+    
+    font-family: sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
 .login-form-field::placeholder {
   color: #3a3a3a;
 }
 
 .login-form-field {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+}
+
+.bio-field {
   border: none;
   border-bottom: 1px solid #3a3a3a;
   margin-bottom: 10px;
