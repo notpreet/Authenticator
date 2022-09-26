@@ -91,7 +91,7 @@
             }
             echo "
                 </tbody>
-            </table>
+            </table> 
             <h4>Make selected candidate HR</h4>
             <form method='POST'>
                 <div class='form-group row mb-0'>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 </div>
-            </form>
+            </form>   
             ";
         }
     }
