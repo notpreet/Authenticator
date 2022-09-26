@@ -1,3 +1,27 @@
+<?php
+include 'dbcon.php';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("location:./index.php");
+}
+?>
+<?php
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("location:./index.php");
+}
+?>
+<?php
+$que = "select * from employee where emp_id='" . $_SESSION['username'] . "'";
+$result = $conn->query($que) or die($conn->error);
+$row = $result->fetch_assoc();
+if (count($row) == 0) {
+    die("invalid employee id");
+}
+$result1 = $conn->query("select * from login where login.emp_id='" . $_SESSION['username'] . "'") or die($conn->error);
+$row1 = $result1->fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -296,6 +320,42 @@
         </div>
         </div>
     </main>
+
+
+    <?php
+    if (isset($_POST['save'])) {
+        $addr = $_POST['address'];
+        $state = $_POST['state'];
+        if ($row['edit_profile'] == 0) {
+            $password=$_POST['pswd'];
+            $ins=$conn->query("update login set password='".$password."' where emp_id='".$_SESSION['username']."'");
+        }
+        $country = $_POST['country'];
+        $gender = $_POST['gender'];
+        $martial = $_POST['marriage'];
+        $bday = $_POST['bday'];
+        $bank = $_POST['bank_acc'];
+        if (isset($_FILES['img']['name'])) {
+            $file = $_FILES['img'];
+            $filename = $_FILES['img']['name'];
+            if (empty($filename)) {
+                $fileDestination = $row['profile_pic'];
+            } else {
+                $fileTmpName = $_FILES['img']['tmp_name'];
+                $fileSize = $_FILES['img']['size'];
+                $fileExt = explode('.', $filename);
+                $fileActualExt = strtolower(end($fileExt));
+                if ($fileSize < 1000000) {
+                    $fileNameNew = $_SESSION['username'] . "." . $fileActualExt;
+                    $fileDestination = "./storage/profile_images/" . $fileNameNew;
+                    move_uploaded_file($fileTmpName, $fileDestination);
+                }
+            }
+        }
+        $ins = "update employee set gender='" . $gender . "',birthdate='" . $bday . "',marital=" . $martial . ",address='" . $addr . "',state='" . $state . "',country='" . $country . "',account_number='" . $bank . "',profile_pic='" . $fileDestination . "',edit_profile=1 where emp_id='" . $_SESSION['username'] . "'";
+        $ins1 = $conn->query($ins) or die($conn->error);
+    }
+    ?>
 </body>
 
 </html>
