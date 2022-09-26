@@ -1,3 +1,33 @@
+<?php
+include 'dbcon.php';
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("location:./index.php");
+}
+if ($_SESSION['admin'] == 1) {
+    session_unset();
+    session_destroy();
+    header("location:./index.php");
+}
+?>
+<?php
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("location:./index.php");
+}
+
+?>
+<?php
+$que = "select * from employee where emp_id='" . $_SESSION['username'] . "'";
+$result = $conn->query($que) or die($conn->error);
+$row = $result->fetch_assoc();
+if ($result->num_rows<= 0) {
+    die("invalid employee id");
+}
+$result1 = $conn->query("select * from login where login.emp_id='" . $_SESSION['username'] . "'") or die($conn->error);
+$row1 = $result1->fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
