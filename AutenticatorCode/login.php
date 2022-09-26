@@ -1,3 +1,13 @@
+<?php
+include 'dbcon.php';
+session_start();
+if (isset($_SESSION['username'])) {
+  if ($_SESSION['admin'] == 1)
+    header("location:./admindashboard.php");
+  else
+    header("location:./userdashboard.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,6 +82,36 @@
       </div>
     </div>
   </div>
+
+  <!-- PHP code -->
+
+
+  <?php
+  if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $pass = $_POST['pswd'];
+    $sql = "SELECT * from login where username='" . $email . "'";
+    $result = $conn->query($sql) or die($conn->error);
+    $row = $result->fetch_assoc();
+    if (mysqli_num_rows($result) > 0) {
+      $_SESSION['username'] = $row['emp_id'];
+      $_SESSION['admin'] = $row['is_hr'];
+      if ($pass == $row['password']) {
+        if ($row['is_hr']) {
+          header("Location: ./admindashboard.php");
+        } else {
+
+          header("Location: ./userdashboard.php");
+        }
+      } else {
+        echo "<script>alert('Wrong password')</script>";
+      }
+    } else {
+      echo "<script>alert('The account does not exist')</script>";
+    }
+  }
+  ?>
+
 </body>
 
 </html>
